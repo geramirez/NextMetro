@@ -5,5 +5,8 @@
   "main": "src/next-metro.js",
   "devDependencies": {
     "jasmine": "latest"
+  },
+  "scripts": {
+    "test": "./node_modules/jasmine/bin/jasmine.js spec/*"
   }
 }
