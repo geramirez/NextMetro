@@ -2,7 +2,7 @@ const { Stations, Prediction } = require('../src/next-metro')
 
 describe("predictions", () => {
 
-  it("tells the UI about new predictions", ()=> {
+  it("tells the UI about new predictions", () => {
     expect(ui.predictions).toHaveBeenCalled()
   })
 

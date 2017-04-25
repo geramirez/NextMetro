@@ -6,11 +6,13 @@ const { PredictionsDashboard } = require("../src/components/PredictionsDashboard
 describe("predictions", function () {
 
     it("renders predictions", function () {
+
       renderApp({
         predictions: function(ui) {
           ui.predictions(predictionsFixture)
         }
       })
+
       Object.entries(predictionsFixture).forEach(([stationName, stationData]) => {
         expect(page()).toContain(stationName)
         stationData.forEach((prediction) => {
@@ -19,6 +21,7 @@ describe("predictions", function () {
           expect(page()).toContain(prediction.minutesToArrival)
         })
       })
+
     })
 
     let domFixture
