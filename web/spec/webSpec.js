@@ -6,7 +6,6 @@ const { PredictionsDashboard } = require("../src/components/PredictionsDashboard
 describe("predictions", function () {
 
     it("renders predictions", function () {
-
       renderApp({
         predictions: function(ui) {
           ui.predictions(predictionsFixture)
@@ -24,8 +23,38 @@ describe("predictions", function () {
 
     })
 
+    it("renders stations in order", () => {
+      renderApp({
+        predictions: function(ui) {
+          ui.predictions(predictionsFixture)
+        }
+      })
+
+      let sortedFixtureStations = Object.keys(predictionsFixture).sort()
+      let stationNames = []
+      let stations = domFixture.getElementsByClassName('station')
+      for(let i = 0; i < stations.length; i++) {
+        let stationName = stations[i].getElementsByClassName('name')[0].textContent
+        stationNames.push(stationName)
+      }
+      expect(stationNames).toEqual(sortedFixtureStations)
+    })
+
     let domFixture
     const predictionsFixture = {
+        "U Street": [
+          new Prediction({
+            "Car": "8",
+            "Destination": "College Park",
+            "DestinationCode": "E06",
+            "DestinationName": "College Park",
+            "Group": "2",
+            "Line": "GR",
+            "LocationCode": "G02",
+            "LocationName": "U Street",
+            "Min": "5"
+          }),
+        ],
         "Judiciary Square": [
           new Prediction({
             "Car": "8",
@@ -48,20 +77,7 @@ describe("predictions", function () {
             "LocationCode": "B02",
             "LocationName": "Judiciary Square",
             "Min": "5"
-          }),
-        ],
-        "U Street": [
-          new Prediction({
-            "Car": "8",
-            "Destination": "College Park",
-            "DestinationCode": "E06",
-            "DestinationName": "College Park",
-            "Group": "2",
-            "Line": "GR",
-            "LocationCode": "G02",
-            "LocationName": "U Street",
-            "Min": "5"
-          }),
+          })
         ]
     }
 
