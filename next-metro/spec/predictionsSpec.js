@@ -7,12 +7,8 @@ describe("predictions", () => {
   })
 
   it("organizes predictions by station", ()=> {
-    let byStation = predictionsFixture.reduce((acc, item) => {
-      let key = item.location
-      acc[key] = acc[key] || []
-      acc[key].push(item)
-      return acc
-    }, {})
+    let byStation = getPredictionsByStation()
+
     expect(ui.predictions).toHaveBeenCalledWith(byStation)
   })
 
@@ -32,59 +28,69 @@ describe("predictions", () => {
 })
 
 const predictionsFixture = [
-    new Prediction({
-      "Car": "8",
-      "Destination": "SilvrSpg",
-      "DestinationCode": "B08",
-      "DestinationName": "Silver Spring",
-      "Group": "1",
-      "Line": "RD",
-      "LocationCode": "B02",
-      "LocationName": "Judiciary Square",
-      "Min": "BRD"
-    }),
-    new Prediction({
-      "Car": "8",
-      "Destination": "Shady Gr",
-      "DestinationCode": "A15",
-      "DestinationName": "Shady Grove",
-      "Group": "2",
-      "Line": "RD",
-      "LocationCode": "B02",
-      "LocationName": "Judiciary Square",
-      "Min": "5"
-    }),
-    new Prediction({
-      "Car": "8",
-      "Destination": "Shady Gr",
-      "DestinationCode": "A15",
-      "DestinationName": "Shady Grove",
-      "Group": "2",
-      "Line": "RD",
-      "LocationCode": "B02",
-      "LocationName": "Judiciary Square",
-      "Min": "5"
-    }),
-    new Prediction({
-      "Car": null,
-      "Destination": "ssenger",
-      "DestinationCode": null,
-      "DestinationName": "No Passenger",
-      "Group": "1",
-      "Line": "No",
-      "LocationCode": "E08",
-      "LocationName": "Prince George's Plaza",
-      "Min": "4"
-    }),
-    new Prediction({
-      "Car": null,
-      "Destination": "ssenger",
-      "DestinationCode": null,
-      "DestinationName": "No Passenger",
-      "Group": "1",
-      "Line": "No",
-      "LocationCode": "E08",
-      "LocationName": "Prince George's Plaza",
-      "Min": "17"
-    })
+  new Prediction({
+    "Car": "8",
+    "Destination": "SilvrSpg",
+    "DestinationCode": "B08",
+    "DestinationName": "Silver Spring",
+    "Group": "1",
+    "Line": "RD",
+    "LocationCode": "B02",
+    "LocationName": "Judiciary Square",
+    "Min": "BRD"
+  }),
+  new Prediction({
+    "Car": "8",
+    "Destination": "Shady Gr",
+    "DestinationCode": "A15",
+    "DestinationName": "Shady Grove",
+    "Group": "2",
+    "Line": "RD",
+    "LocationCode": "B02",
+    "LocationName": "Judiciary Square",
+    "Min": "5"
+  }),
+  new Prediction({
+    "Car": "8",
+    "Destination": "Shady Gr",
+    "DestinationCode": "A15",
+    "DestinationName": "Shady Grove",
+    "Group": "2",
+    "Line": "RD",
+    "LocationCode": "B02",
+    "LocationName": "Judiciary Square",
+    "Min": "5"
+  }),
+  new Prediction({
+    "Car": null,
+    "Destination": "ssenger",
+    "DestinationCode": null,
+    "DestinationName": "No Passenger",
+    "Group": "1",
+    "Line": "No",
+    "LocationCode": "E08",
+    "LocationName": "Prince George's Plaza",
+    "Min": "4"
+  }),
+  new Prediction({
+    "Car": null,
+    "Destination": "ssenger",
+    "DestinationCode": null,
+    "DestinationName": "No Passenger",
+    "Group": "1",
+    "Line": "No",
+    "LocationCode": "E08",
+    "LocationName": "Prince George's Plaza",
+    "Min": "17"
+  })
 ]
+
+function getPredictionsByStation() {
+  return predictionsFixture.reduce((acc, item) => {
+    let key = item.location
+    acc[key] = acc[key] || []
+    acc[key].push(item)
+    return acc
+  }, {})
+}
+

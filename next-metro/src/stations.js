@@ -2,7 +2,6 @@ function Stations(predictionsService) {
   this.predictions = function(ui) {
     const fetcher = new PredictionFetcher(predictionsService, ui)
     fetcher.execute()
-    setInterval(() => {fetcher.execute()}, 1000 * 60);
   }
 }
 
