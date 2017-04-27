@@ -12,20 +12,37 @@ describe("predictions", () => {
     expect(ui.predictions).toHaveBeenCalledWith(byStation)
   })
 
-  let ui, predictionsServiceStub
-
   beforeEach(() => {
+    setIntervalWrapperStub = jasmine.createSpy("setIntervalWrapper").and.callThrough()
     ui = jasmine.createSpyObj("ui", ["predictions"])
 
-    predictionsServiceStub = {
-      fetch: function(callback) {
-        callback(predictionsFixture)
-      }
-    }
-    stations = new Stations(predictionsServiceStub)
+    stations = new Stations(predictionsServiceStub, setIntervalWrapperStub)
     stations.predictions(ui)
   })
 })
+
+describe("refreshing predictions", () => {
+
+  it("calls a setInterval method that refreshes predictions", () => {
+    expect(ui.predictions.calls.count()).toEqual(2);
+  })
+
+  beforeEach(() => {
+    setIntervalWrapperStub = function(cb) { cb() }
+    ui = jasmine.createSpyObj("ui", ["predictions"])
+
+    stations = new Stations(predictionsServiceStub, setIntervalWrapperStub)
+    stations.predictions(ui)
+  });
+})
+
+let ui, setIntervalWrapperStub
+
+const predictionsServiceStub = {
+  fetch: function(callback) {
+    callback(predictionsFixture)
+  }
+}
 
 const predictionsFixture = [
   new Prediction({
