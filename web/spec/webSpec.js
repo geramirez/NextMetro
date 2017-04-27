@@ -31,13 +31,7 @@ describe("predictions", function () {
       })
 
       let sortedFixtureStations = Object.keys(predictionsFixture).sort()
-      let stationNames = []
-      let stations = domFixture.getElementsByClassName('station')
-      for(let i = 0; i < stations.length; i++) {
-        let stationName = stations[i].getElementsByClassName('name')[0].textContent
-        stationNames.push(stationName)
-      }
-      expect(stationNames).toEqual(sortedFixtureStations)
+      expect(pageStationNames()).toEqual(sortedFixtureStations)
     })
 
     let domFixture
@@ -105,4 +99,15 @@ describe("predictions", function () {
     function page() {
         return domFixture.innerText
     }
+
+    function pageStationNames() {
+      let stationNames = []
+      let stations = domFixture.getElementsByClassName('station')
+      for(let i = 0; i < stations.length; i++) {
+        let stationName = stations[i].getElementsByClassName('name')[0].textContent
+        stationNames.push(stationName)
+      }
+      return stationNames
+    }
+
 })
