@@ -22,7 +22,11 @@ class PredictionsDashboard extends React.Component {
   renderStations() {
     return this.sortedStations().map((name, i) => {
       let predictions = this.state.predictionsByStation[name]
-      return <Station key={i} name={name} predictions={predictions}/>
+      return (
+        <div key={i} className="row">
+          <Station key={i} name={name} predictions={predictions}/>
+        </div>
+      )
     })
   }
 
@@ -45,21 +49,32 @@ function Station(props) {
   }
 
   return (
-    <div key={name} className='station'>
-      <h3 className='name'>{name}</h3>
-      {renderPredictions(predictions)}
-      <div/>
+    <div key={name} className='station small-6 small-centered columns'>
+      <div className='card'>
+        <div className='card-divider'>
+          <h4 className='name'>{name}</h4>
+        </div>
+        <div className='card-section'>
+          <div className="prediction row">
+            <div className="line medium-3 columns">Line</div>
+            <div className="destination medium-6 columns">Destination</div>
+            <div className="time-to-arrival medium-3 columns">Minutes</div>
+          </div>
+          {renderPredictions(predictions)}
+        </div>
+      </div>
     </div>
   )
 }
 
 function Prediction(props) {
   const { prediction } = props
+
   return (
-    <div className="prediction">
-      <div className="line">{prediction.line}</div>
-      <div className="destination">{prediction.destination}</div>
-      <div className="time-to-arrival">{prediction.minutesToArrival}</div>
+    <div className="prediction row">
+      <div className="line medium-3 columns">{prediction.line}</div>
+      <div className="destination medium-6 columns">{prediction.destination}</div>
+      <div className="time-to-arrival medium-3 columns">{prediction.minutesToArrival}</div>
     </div>
   )
 }
