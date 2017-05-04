@@ -1,20 +1,29 @@
 {
-  "name": "web",
-  "version": "0.0.0",
-  "dependencies": {
-    "next-metro": "file:../next-metro",
-    "react": "latest",
-    "react-dom": "latest"
-  },
   "devDependencies": {
-    "jasmine": "latest",
-    "babel": "latest",
-    "babelify": "latest",
-    "babel-preset-es2015": "latest",
-    "babel-preset-react": "latest"
+    "babel-preset-env": "^1.4.0",
+    "babel-preset-react": "^6.24.1",
+    "chai": "^3.5.0",
+    "chai-enzyme": "^0.6.1",
+    "create-react-class": "^15.5.2",
+    "enzyme": "^2.8.2",
+    "jsdom": "^8.0.1",
+    "mocha": "^3.3.0",
+    "react-test-renderer": "^15.5.4"
   },
   "scripts": {
-    "compile-test": "watchify spec/webSpec.js -o bundled/compiledSpecs.js -t [ babelify --presets [ es2015 react ] ]",
-    "compile": "watchify main.js -o bundled/compiledMain.js -t [ babelify --presets [ es2015 react ] ]"
+    "test": "./node_modules/mocha/bin/mocha test/*.js --require babel-register --require ./test/setup.js --reporter spec || exit 0",
+    "compile": "./node_modules/browserify/bin/cmd.js main.js -t babelify -o bundled/compiledMain.js"
+  },
+  "name": "web2",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "dependencies": {
+    "babelify": "^7.3.0",
+    "browserify": "^14.3.0",
+    "next-metro": "file:../next-metro",
+    "react": "^15.5.4",
+    "react-dom": "^15.5.4",
+    "react-select": "^1.0.0-rc.3"
   }
 }
