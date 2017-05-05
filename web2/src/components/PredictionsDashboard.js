@@ -1,50 +1,55 @@
-const React = require('react')
+import React from 'react'
 
 class PredictionsDashboard extends React.Component {
 
-  constructor() {
+  constructor () {
     super()
-    this.state = {predictionsByStation: []}
+    this.state = {
+      predictionsByStation: [],
+      selectedStations: []
+    }
   }
 
-  predictions(predictionsByStation) {
+  predictions (predictionsByStation) {
     this.setState({predictionsByStation})
   }
 
-  componentDidMount() {
+  componentDidMount () {
     this.props.stations.predictions(this)
   }
 
-  sortedStations() {
-    return Object.keys(this.state.predictionsByStation).sort()
+  sortedStations () {
+    return this.state.selectedStations.sort()
   }
 
-  renderStations() {
+  renderStations () {
     return this.sortedStations().map((name, i) => {
       let predictions = this.state.predictionsByStation[name]
       return (
-        <div key={i} className="row">
-          <Station key={i} name={name} predictions={predictions}/>
+        <div key={i} className='row'>
+          <Station key={i} name={name} predictions={predictions} />
         </div>
       )
     })
   }
 
-  render() {
+  render () {
     return (
-      <div className='stations'>
-        {this.renderStations()}
+      <div>
+        <div className='stations'>
+          {this.renderStations()}
+        </div>
       </div>
     )
   }
 }
 
-function Station(props) {
+function Station (props) {
   const { name, predictions } = props
 
- function renderPredictions(stationData) {
+  function renderPredictions (stationData) {
     return stationData.map((prediction, i) => {
-      return <Prediction key={i} prediction={prediction}/>
+      return <Prediction key={i} prediction={prediction} />
     })
   }
 
@@ -55,10 +60,16 @@ function Station(props) {
           <h4 className='name'>{name}</h4>
         </div>
         <div className='card-section'>
-          <div className="prediction row">
-            <div className="line medium-3 columns">Line</div>
-            <div className="destination medium-6 columns">Destination</div>
-            <div className="time-to-arrival medium-3 columns">Minutes</div>
+          <div className='prediction row'>
+            <div className='line medium-3 columns'>
+              Line
+            </div>
+            <div className='destination medium-6 columns'>
+              Destination
+            </div>
+            <div className='time-to-arrival medium-3 columns'>
+              Minutes
+            </div>
           </div>
           {renderPredictions(predictions)}
         </div>
@@ -67,18 +78,23 @@ function Station(props) {
   )
 }
 
-function Prediction(props) {
+function Prediction (props) {
   const { prediction } = props
 
   return (
-    <div className="prediction row">
-      <div className="line medium-3 columns">{prediction.line}</div>
-      <div className="destination medium-6 columns">{prediction.destination}</div>
-      <div className="time-to-arrival medium-3 columns">{prediction.minutesToArrival}</div>
+    <div className='prediction row'>
+      <div className='line medium-3 columns'>
+        {prediction.line}
+      </div>
+      <div className='destination medium-6 columns'>
+        {prediction.destination}
+      </div>
+      <div className='time-to-arrival medium-3 columns'>
+        {prediction.minutesToArrival}
+      </div>
     </div>
   )
 }
 
 module.exports = {
-  PredictionsDashboard
-}
+PredictionsDashboard}
