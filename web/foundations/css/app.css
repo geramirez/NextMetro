@@ -1,0 +1,36 @@
+body {
+  background: white
+}
+
+
+.stations {
+  margin-top: 10px;
+}
+
+.station-select {
+  margin-top: 10px;
+}
+
+.station > .card {
+  border: 2px solid #A38821;
+  border-radius: 5px;
+}
+
+.station > .card > .title {
+  background: #C5AA41;
+}
+
+.station > .card > .predictions {
+  background: #FFF3C4
+}
+
+.station > .card > .predictions > .prediction-label {
+  border-bottom: 1px solid #1D3E6B;
+  margin-bottom: 10px;
+}
+
+
+.station > .card > .prediction-label {
+
+}
+

@@ -32,7 +32,7 @@ class PredictionsDashboard extends React.Component {
     return this.state.selectedStations.map((name, i) => {
       let predictions = this.state.predictionsByStation[name]
       return (
-        <div key={i} className='row'>
+        <div key={i} className='column column-block'>
           <Station key={i} name={name} predictions={predictions} />
         </div>
       )
@@ -43,7 +43,7 @@ class PredictionsDashboard extends React.Component {
     return (
       <div>
         <StationSelect updateSelectedStation={this.onChangeStationSelect.bind(this)} stations={this.sortedStations()} selectedStations={this.state.selectedStations} />
-        <div className='stations'>
+        <div className='stations row large-up-2'>
           {this.renderStations()}
         </div>
       </div>
@@ -87,13 +87,13 @@ function Station (props) {
   }
 
   return (
-    <div key={name} className='station small-6 small-centered columns'>
+    <div key={name} className='station'>
       <div className='card'>
-        <div className='card-divider'>
+        <div className='title card-divider'>
           <h4 className='name'>{name}</h4>
         </div>
-        <div className='card-section'>
-          <div className='prediction row'>
+        <div className='predictions card-section'>
+          <div className='prediction-label row'>
             <div className='line medium-3 columns'>
               Line
             </div>

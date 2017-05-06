@@ -2,7 +2,7 @@ import React from 'react'
 import { expect } from 'chai'
 import { mount, shallow } from 'enzyme'
 
-import { PredictionsDashboard } from '../src/components/PredictionsDashboard'
+import { PredictionsDashboard, StationSelect  } from '../src/components/PredictionsDashboard'
 import { Prediction } from 'next-metro'
 
 describe('<PredictionsDashboard />', () => {
@@ -22,7 +22,7 @@ describe('<PredictionsDashboard />', () => {
 
     beforeEach(() => {
       selectedStations = [stationsNameFixture[0], stationsNameFixture[2]]
-      dashboard.setState({selectedStations: selectedStations})
+      dashboard.instance().onChangeStationSelect(selectedStations)
     })
 
     it('renders the selected stations in order', () => {
@@ -78,7 +78,6 @@ const predictionsFixture = {
       'Min': '5'
     })
   ],
-
   'Judiciary Square': [
     new Prediction({
       'Car': '8',
