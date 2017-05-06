@@ -25,7 +25,6 @@ class PredictionsDashboard extends React.Component {
   }
 
   onChangeStationSelect (selectedStations) {
-    console.log(selectedStations, 'select')
     this.setState({selectedStations})
   }
 
@@ -43,7 +42,7 @@ class PredictionsDashboard extends React.Component {
   render () {
     return (
       <div>
-        <StationSelect onChange={this.onChangeStationSelect.bind(this)} stations={this.sortedStations()} />
+        <StationSelect updateSelectedStation={this.onChangeStationSelect.bind(this)} stations={this.sortedStations()} selectedStations={this.state.selectedStations} />
         <div className='stations'>
           {this.renderStations()}
         </div>
@@ -53,18 +52,28 @@ class PredictionsDashboard extends React.Component {
 }
 
 function StationSelect (props) {
+  const { stations, selectedStations, updateSelectedStation } = props
+
   function getOptions () {
-    return props.stations.map((station) => {
+    return stations.map((station) => {
       return {value: station, label: station}
     })
   }
 
+  function onChange (newStations) {
+    updateSelectedStation(newStations.map((station) => station.label))
+  }
+
   return (
-    <Select
-      className='station-select'
-      multi={true}
-      options={getOptions()}
-      onChange={props.onChange} />
+    <div className='row'>
+      <Select
+        className='station-select small-6 small-centered columns'
+        multi={true}
+        options={getOptions()}
+        value={selectedStations}
+        placeholder='Select stations'
+        onChange={onChange} />
+    </div>
   )
 }
 
