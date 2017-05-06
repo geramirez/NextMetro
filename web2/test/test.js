@@ -21,10 +21,10 @@ describe('<PredictionsDashboard />', () => {
     let selectedStations
 
     beforeEach(() => {
-      let stationSelector = dashboard.find('.station-select')
-      stationSelector.simulate('change', {target: {value: selectedStations}})
-    // selectedStations = [stationsNameFixture[0], stationsNameFixture[2]]
-    // dashboard.setState({selectedStations: selectedStations})
+      // let stationSelector = dashboard.find('.station-select')
+      // stationSelector.simulate('change', {target: {value: selectedStations}})
+      selectedStations = [stationsNameFixture[0], stationsNameFixture[2]]
+      dashboard.setState({selectedStations: selectedStations})
     })
 
     it('renders the selected stations in order', () => {
