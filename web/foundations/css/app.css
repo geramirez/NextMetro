@@ -1,10 +1,9 @@
 body {
-  background: white
+  background: #222831
 }
 
-
 .stations {
-  margin-top: 10px;
+  margin-top: 30px;
 }
 
 .station-select {
@@ -12,25 +11,25 @@ body {
 }
 
 .station > .card {
-  border: 2px solid #A38821;
+  border: 5px solid #00ADB5;
   border-radius: 5px;
 }
 
 .station > .card > .title {
-  background: #C5AA41;
+  background: #393E46;
+  padding-bottom: 0px;
+  color: #EEEEEE
 }
 
 .station > .card > .predictions {
-  background: #FFF3C4
+  padding-top: 8px;
+  background: #393E46;
+  color: #EEEEEE;
 }
 
 .station > .card > .predictions > .prediction-label {
-  border-bottom: 1px solid #1D3E6B;
+  border-bottom: 3px solid #00ADB5;
   margin-bottom: 10px;
 }
 
-
-.station > .card > .prediction-label {
-
-}
 

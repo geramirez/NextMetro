@@ -90,7 +90,7 @@ function Station (props) {
     <div key={name} className='station'>
       <div className='card'>
         <div className='title card-divider'>
-          <h4 className='name'>{name}</h4>
+          <h4 className='name'><bold> {name} </bold></h4>
         </div>
         <div className='predictions card-section'>
           <div className='prediction-label row'>
