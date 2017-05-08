@@ -2,7 +2,7 @@ import React from 'react'
 import { expect } from 'chai'
 import { mount, shallow } from 'enzyme'
 
-import { PredictionsDashboard, StationSelect  } from '../src/components/PredictionsDashboard'
+import { PredictionsDashboard, StationSelect } from '../src/components/PredictionsDashboard'
 import { Prediction } from 'next-metro'
 
 describe('<PredictionsDashboard />', () => {

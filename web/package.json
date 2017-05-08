@@ -12,7 +12,7 @@
   },
   "scripts": {
     "test": "./node_modules/mocha/bin/mocha test/*.js --require babel-register --require ./test/setup.js --reporter spec || exit 0",
-    "compile": "./node_modules/browserify/bin/cmd.js main.js -t babelify -o bundled/compiledMain.js"
+    "compile": "./node_modules/browserify/bin/cmd.js main.js -t babelify -o public/bundled/compiledMain.js"
   },
   "name": "web2",
   "version": "1.0.0",
@@ -21,6 +21,7 @@
   "dependencies": {
     "babelify": "^7.3.0",
     "browserify": "^14.3.0",
+    "express": "^4.15.2",
     "next-metro": "file:../next-metro",
     "react": "^15.5.4",
     "react-dom": "^15.5.4",
