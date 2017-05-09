@@ -26,6 +26,7 @@
     "next-metro": "file:../next-metro",
     "react": "^15.5.4",
     "react-dom": "^15.5.4",
-    "react-select": "^1.0.0-rc.3"
+    "react-select": "^1.0.0-rc.3",
+    "request": "^2.81.0"
   }
 }

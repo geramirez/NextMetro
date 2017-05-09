@@ -1,3 +1,4 @@
 *.idea
 bundled/
 node_modules/
+*.env

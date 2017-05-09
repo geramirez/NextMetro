@@ -1,11 +1,6 @@
 const PredictionsService = {
   fetch: function (callback) {
-    params = {
-      headers: {
-        api_key: '721e30509a774404931b4d9376ed823e'
-      }
-    }
-    fetch('https://api.wmata.com/StationPrediction.svc/json/GetPrediction/All', params)
+    fetch('/station', {})
       .then(function (response) {
         return response.json()
       })
