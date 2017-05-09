@@ -1,3 +1,5 @@
+const { Prediction } = require('./prediction')
+
 function Stations (predictionsService, setIntervalWrapper) {
   this.predictions = function (ui) {
     const fetcher = new PredictionFetcher(predictionsService, ui)
@@ -9,8 +11,8 @@ function Stations (predictionsService, setIntervalWrapper) {
 
 function PredictionFetcher (predictionsService, ui) {
   this.execute = function () {
-    console.log('Getting station data')
-    predictionsService.fetch((predictions) => {
+    predictionsService.fetch((data) => {
+      let predictions = data.map(p => new Prediction(p))
       ui.predictions(groupByStation(predictions))
     })
   }
