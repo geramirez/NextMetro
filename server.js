@@ -35,7 +35,7 @@ app.route('/station').get((req, res) => {
   res.json(trainsData)
 })
 
-app.use(express.static('public'))
+app.use(express.static('client/public'))
 
 app.listen(8080)
 
