@@ -45,7 +45,7 @@ class PredictionsDashboard extends React.Component {
     return (
       <div>
         <StationSelect updateSelectedStation={this.onChangeStationSelect.bind(this)} stations={this.sortedStations()} selectedStations={this.state.selectedStations} />
-        <div className='stations row medium-up-2 small-up-1'>
+        <div className='stations row large-up-2 medium-up-1'>
           {this.renderStations()}
         </div>
       </div>

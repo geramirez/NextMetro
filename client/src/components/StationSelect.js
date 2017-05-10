@@ -17,7 +17,7 @@ export default function StationSelect (props) {
   return (
     <div className='row'>
       <Select
-        className='station-select medium-6 small-12 small-centered columns'
+        className='station-select columns'
         multi={true}
         options={getOptions()}
         value={selectedStations}
