@@ -5,10 +5,18 @@
   "repository": "git@github.com:geramirez/NextMetro.git",
   "license": "MIT",
   "scripts": {
-    "start": "node server.js"
+    "compile": "./node_modules/browserify/bin/cmd.js client/main.js -t babelify -o client/public/bundled/compiledMain.js",
+    "start": "yarn compile && node server.js"
   },
   "dependencies": {
+    "babel-preset-env": "^1.4.0",
+    "babel-preset-react": "^6.24.1",
+    "babelify": "^7.3.0",
+    "browserify": "^14.3.0",
+    "client": "file:client",
+    "create-react-class": "^15.5.3",
     "express": "^4.15.2",
+    "next-metro": "file:next-metro",
     "request": "^2.81.0"
   }
 }
