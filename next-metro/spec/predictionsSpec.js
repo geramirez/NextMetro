@@ -1,4 +1,4 @@
-const { Stations, Prediction } = require('../src/next-metro')
+const { NextMetro, Prediction } = require('../main')
 
 describe('predictions', () => {
 
@@ -13,26 +13,31 @@ describe('predictions', () => {
   })
 
   beforeEach(() => {
-    setIntervalWrapperStub = jasmine.createSpy('setIntervalWrapper').and.callThrough()
     ui = jasmine.createSpyObj('ui', ['predictions'])
 
-    stations = new Stations(predictionsServiceStub, setIntervalWrapperStub)
+    stations = new NextMetro(predictionsServiceStub)
     stations.predictions(ui)
   })
 })
 
 describe('refreshing predictions', () => {
 
-  it('calls a setInterval method that refreshes predictions', () => {
+  it('refreshes the data every 30 seconds', () => {
+    expect(ui.predictions.calls.count()).toEqual(1)
+    jasmine.clock().tick(30001)
     expect(ui.predictions.calls.count()).toEqual(2)
   })
 
   beforeEach(() => {
-    setIntervalWrapperStub = function (cb) { cb() }
     ui = jasmine.createSpyObj('ui', ['predictions'])
+    jasmine.clock().install();
 
-    stations = new Stations(predictionsServiceStub, setIntervalWrapperStub)
+    stations = new NextMetro(predictionsServiceStub)
     stations.predictions(ui)
+  })
+
+  afterEach(() => {
+    jasmine.clock().uninstall()
   })
 })
 

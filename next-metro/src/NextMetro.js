@@ -1,11 +1,10 @@
 const { Prediction } = require('./prediction')
 
-function Stations (predictionsService, setIntervalWrapper) {
+function NextMetro (predictionsService) {
   this.predictions = function (ui) {
     const fetcher = new PredictionFetcher(predictionsService, ui)
     fetcher.execute()
-    setIntervalWrapper(() => {
-      fetcher.execute()})
+    setInterval(() => fetcher.execute(), 30000)
   }
 }
 
@@ -27,5 +26,4 @@ function PredictionFetcher (predictionsService, ui) {
   }
 }
 
-module.exports = {
-Stations}
+module.exports = {NextMetro}

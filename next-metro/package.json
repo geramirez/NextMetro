@@ -2,7 +2,7 @@
   "name": "next-metro",
   "version": "0.0.0",
   "files": ["src/"],
-  "main": "src/next-metro.js",
+  "main": "main.js",
   "devDependencies": {
     "jasmine": "latest"
   },
