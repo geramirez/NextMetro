@@ -1,28 +1,15 @@
-var express = require('express')
-var app = express()
-var path = require('path')
-var request = require('request')
-
-const PredictionsService = {
-  fetch: function (callback) {
-    params = {
-      headers: {
-        api_key: process.env.API_KEY
-      }
-    }
-    request.get('https://api.wmata.com/StationPrediction.svc/json/GetPrediction/All', params , function (error, response, body) {
-      callback(JSON.parse(body))
-    })
-  }
-}
+const express = require('express')
+const app = express()
+const path = require('path')
+const {NextMetroProxy} = require('next-metro-proxy')
 
 let trainsData
-PredictionsService.fetch((data) => {
+NextMetroProxy.fetchPredictions((data) => {
   trainsData = data
 })
 
 setInterval(() => {
-  PredictionsService.fetch((data) => {
+  NextMetroProxy.fetchPredictions((data) => {
     trainsData = data
   })
 }, 60000)

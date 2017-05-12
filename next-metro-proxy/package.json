@@ -1,0 +1,21 @@
+{
+  "name": "next-metro-proxy",
+  "version": "1.0.0",
+  "main": "main.js",
+  "license": "MIT",
+  "devDependencies": {
+    "add": "^2.0.6",
+    "babel-preset-env": "^1.4.0",
+    "babelify": "^7.3.0",
+    "chai": "^3.5.0",
+    "mocha": "^3.3.0",
+    "nock": "^9.0.13",
+    "yarn": "^0.23.4"
+  },
+  "scripts": {
+    "test": "./node_modules/mocha/bin/mocha spec/*.js --require babel-register --reporter spec || exit 0"
+  },
+  "dependencies": {
+    "node-fetch": "^1.6.3"
+  }
+}

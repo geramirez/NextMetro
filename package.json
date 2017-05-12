@@ -17,6 +17,7 @@
     "create-react-class": "^15.5.3",
     "express": "^4.15.2",
     "next-metro": "file:next-metro",
-    "request": "^2.81.0"
-  }
+    "next-metro-proxy": "file:next-metro-proxy"
+  },
+  "devDependencies": {}
 }
