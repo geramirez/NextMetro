@@ -6,6 +6,10 @@
   "license": "MIT",
   "scripts": {
     "compile": "./node_modules/browserify/bin/cmd.js client/main.js -t babelify -o client/public/bundled/compiledMain.js",
+    "test-client": "./node_modules/mocha/bin/mocha client/test/*.js --require babel-register --require ./client/test/setup.js --reporter spec || exit 0",
+    "test-next-metro": "./node_modules/jasmine/bin/jasmine.js next-metro/spec/*",
+    "test-next-metro-proxy": "API_KEY='fake-key' ./node_modules/mocha/bin/mocha next-metro-proxy/spec/*.js --require babel-register --reporter spec || exit 0",
+    "test": "yarn test-client && yarn test-next-metro && yarn test-next-metro-proxy",
     "start": "yarn compile && node server.js"
   },
   "dependencies": {
@@ -19,5 +23,25 @@
     "next-metro": "file:next-metro",
     "next-metro-proxy": "file:next-metro-proxy"
   },
-  "devDependencies": {}
+  "devDependencies": {
+    "chai-enzyme": "^0.6.1",
+    "enzyme": "^2.8.2",
+    "jasmine": "^2.6.0",
+    "mocha": "^3.4.1",
+    "nock": "^9.0.13",
+    "react": "^15.5.4",
+    "react-addons-test-utils": "^15.5.1",
+    "babel-preset-env": "^1.4.0",
+    "babelify": "^7.3.0",
+    "chai": "^3.5.0",
+    "yarn": "^0.23.4",
+    "babel-preset-react": "^6.24.1",
+    "chai-http": "^3.0.0",
+    "create-react-class": "^15.5.2",
+    "jsdom": "^8.0.1",
+    "react-test-renderer": "^15.5.4"
+  },
+  "engines": {
+    "node": "6"
+  }
 }
