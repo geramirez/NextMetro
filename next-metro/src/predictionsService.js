@@ -1,6 +1,6 @@
 const PredictionsService = {
   fetch: function (callback) {
-    fetch('/station', {})
+    fetch('/trains', {})
       .then(function (response) {
         return response.json()
       })

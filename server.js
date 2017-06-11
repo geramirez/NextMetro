@@ -18,7 +18,7 @@ app.get('/', function (req, res) {
   res.sendFile(path.join(__dirname + '/index.html'))
 })
 
-app.route('/station').get((req, res) => {
+app.route('/trains').get((req, res) => {
   res.json(trainsData)
 })
 

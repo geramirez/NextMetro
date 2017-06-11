@@ -6,10 +6,11 @@
   "license": "MIT",
   "scripts": {
     "compile": "./node_modules/browserify/bin/cmd.js client/main.js -t babelify -o client/public/bundled/compiledMain.js",
-    "test-client": "./node_modules/mocha/bin/mocha client/test/*.js --require babel-register --require ./client/test/setup.js --reporter spec || exit 0",
+    "test-server": "mocha test/*.js --require babel-register --reporter spec || exit 0",
+    "test-client": "mocha client/test/*.js --require babel-register --require ./client/test/setup.js --reporter spec || exit 0",
     "test-next-metro": "./node_modules/jasmine/bin/jasmine.js next-metro/spec/*",
-    "test-next-metro-proxy": "API_KEY='fake-key' ./node_modules/mocha/bin/mocha next-metro-proxy/spec/*.js --require babel-register --reporter spec || exit 0",
-    "test": "yarn test-client && yarn test-next-metro && yarn test-next-metro-proxy",
+    "test-next-metro-proxy": "API_KEY='fake-key' mocha next-metro-proxy/spec/*.js --require babel-register --reporter spec || exit 0",
+    "test": "yarn test-server && yarn test-client && yarn test-next-metro && yarn test-next-metro-proxy",
     "start": "yarn compile && node server.js"
   },
   "dependencies": {

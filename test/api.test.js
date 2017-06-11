@@ -1,21 +1,19 @@
 process.env.NODE_ENV = 'test'
 
-import { expect } from 'chai'
-import chai from 'chai'
-import chaiHttp from 'chai-http'
-import server from '../server'
+const chai = require('chai')
+const chaiHttp = require('chai-http')
+const server = require('../server')
 
 chai.use(chaiHttp)
 
 describe('Next-Metro API', () => {
 
-  describe('/GET stations', (done) => {
-    it('should return a list of all the stations', (done) => {
+  describe('/GET trains', (done) => {
+    it('should return a list of all the train preditions', (done) => {
       chai.request(server)
-        .get('/station')
+        .get('/trains')
         .end((err, res) => {
-          expect(res).to.have.status(200)
-          expect()
+          chai.expect(res).to.have.status(200)
           done()
         })
     })
